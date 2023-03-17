@@ -9,6 +9,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 public class LevelsList : MonoBehaviour
 {
 
@@ -23,6 +24,7 @@ public class LevelsList : MonoBehaviour
     public float yOffsetGlobal = 25;
 
     public float scrollSpeed = 10f;
+    public float scrollEndOffset = 100;
 
     public int modCount = 0;
 
@@ -31,27 +33,46 @@ public class LevelsList : MonoBehaviour
     public GameInstallLocation installLocManager;
 
     public Color altModPrefabColor = new Color(58, 48, 58);
+    public Texture2D defaultIcon;
+    public Texture2D icon;
+    public GameObject bottomMod;
+    public Vector3 position_prev = Vector3.zero;
+    public Vector3 startPos = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
         installLocManager = FindObjectOfType<GameInstallLocation>();       
+        position_prev = transform.position;
+        startPos = transform.position;
+    }
 
+    void Awake(){
+        startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(new Vector2(0, Input.mouseScrollDelta.y) * scrollSpeed * Time.deltaTime);
-        if(transform.localPosition.y > (listCount * yOffsetGlobal) + 110){
-            transform.localPosition = new Vector3(0, (listCount * yOffsetGlobal) + 111, 0);
+        if(bottomMod.transform.position.y >= scrollEndOffset){
+            transform.position = position_prev;
         }
         if(transform.localPosition.y < -1){
             transform.localPosition = new Vector3(0, 0, 0);
         }
+        position_prev = transform.position;
     }
 
     public void Reload_Mods(){
+        
+        transform.position = startPos;
+        InstalledModObj[] existingModObjs = FindObjectsOfType<InstalledModObj>();
+        if(existingModObjs.Length > 0){
+            foreach(InstalledModObj m in existingModObjs){
+                DestroyGameObjectAndChildren(m.gameObject);
+            }
+        }
         float y = startY;
 
         string[] localDirectories = Directory.GetDirectories(Path.Combine(installLocManager.currentInstallLocation, "gmml/mods"));
@@ -71,8 +92,9 @@ public class LevelsList : MonoBehaviour
                 InstalledModObj modInfo = installedMod.GetComponent<InstalledModObj>();
                 string metadataJson = File.ReadAllText(dir + "/metadata.json");
                 MetaDataJson metaData = CreateFromMetadataJson(metadataJson);
-                modInfo.name = metaData.name;
+                modInfo.title = metaData.name;
                 modInfo.description = metaData.description;
+                modInfo.path = dir;
                 string authors = "by ";
                 foreach(string a in metaData.authors){
                     if(authors == "by "){
@@ -86,7 +108,16 @@ public class LevelsList : MonoBehaviour
                     installedMod.GetComponent<RawImage>().color = altModPrefabColor;
                 }
                 y -= yOffset;
+                if(File.Exists(dir + "/icon.png")){
+                    GetImageFromPath("file://" + dir + "/icon.png");
+                    modInfo.icon = icon;
+                } else {
+                    modInfo.icon = defaultIcon;
+                }
                 i++;
+                if(i >= localDirectoriesFiltered.Count - 2){
+                    bottomMod = installedMod;
+                }
             }    
         }
         listCount = localDirectoriesFiltered.Count;
@@ -96,13 +127,44 @@ public class LevelsList : MonoBehaviour
         return JsonUtility.FromJson<MetaDataJson>(json);
     }
 
+
+    //https://docs.unity3d.com/ScriptReference/Networking.UnityWebRequestTexture.GetTexture.html
+    //Because I am too lazy to write it myself. :D
+    IEnumerator GetImageFromPath(string path)
+    {
+        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(path))
+        {
+            yield return uwr.SendWebRequest();
+
+
+            if (uwr.result != UnityWebRequest.Result.Success)
+            {
+                icon = defaultIcon;
+            }
+            else
+            {
+                // Get downloaded asset bundle
+                icon = DownloadHandlerTexture.GetContent(uwr);
+            }
+        }
+    }
+
+    
+    public void DestroyGameObjectAndChildren(GameObject obj){
+        foreach(Transform c in obj.transform){
+            DestroyGameObjectAndChildren(c.gameObject);
+            Destroy(c.gameObject);
+        }
+        Destroy(obj);
+    }
+
 }
 
     public class MetaDataJson {
-        public string id {get; set;}
-        public string name {get; set;}
-        public string version {get; set;}
-        public string[] authors {get; set;}
-        public string description {get; set;}
+        public string id;
+        public string name;
+        public string version;
+        public string[] authors;
+        public string description;
         public Dictionary<string, string>[] dependencies {get; set;}
     }
