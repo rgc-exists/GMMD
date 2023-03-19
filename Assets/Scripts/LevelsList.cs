@@ -30,7 +30,7 @@ public class LevelsList : MonoBehaviour
 
     public float listCount = 0;
 
-    public GameInstallLocation installLocManager;
+    public MenuManager menuManager;
 
     public Color altModPrefabColor = new Color(58, 48, 58);
     public Texture2D defaultIcon;
@@ -42,12 +42,12 @@ public class LevelsList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        installLocManager = FindObjectOfType<GameInstallLocation>();       
         position_prev = transform.position;
         startPos = transform.position;
     }
 
     void Awake(){
+        menuManager = FindObjectOfType<MenuManager>();       
         startPos = transform.position;
     }
 
@@ -75,7 +75,7 @@ public class LevelsList : MonoBehaviour
         }
         float y = startY;
 
-        string[] localDirectories = Directory.GetDirectories(Path.Combine(installLocManager.currentInstallLocation, "gmml/mods"));
+        string[] localDirectories = Directory.GetDirectories(Path.Combine(menuManager.currentInstallLocation, "gmml/mods"));
         List<string> localDirectoriesFiltered = new List<string>();
         foreach(string d in localDirectories){
             Debug.Log("Found: " + d);
@@ -95,6 +95,7 @@ public class LevelsList : MonoBehaviour
                 modInfo.title = metaData.name;
                 modInfo.description = metaData.description;
                 modInfo.path = dir;
+                modInfo.id = metaData.id;
                 string authors = "by ";
                 foreach(string a in metaData.authors){
                     if(authors == "by "){
@@ -115,9 +116,7 @@ public class LevelsList : MonoBehaviour
                     modInfo.icon = defaultIcon;
                 }
                 i++;
-                if(i >= localDirectoriesFiltered.Count - 2){
-                    bottomMod = installedMod;
-                }
+                bottomMod = installedMod;
             }    
         }
         listCount = localDirectoriesFiltered.Count;

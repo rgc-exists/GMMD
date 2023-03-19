@@ -258,103 +258,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25013856}
   m_CullTransparentMesh: 1
---- !u!1001 &41043375
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 17.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -3.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412642, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269578139667412645, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
-      propertyPath: m_Name
-      value: InstalledModInstance
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4437f4321ad1d83469b1e02892af0293, type: 3}
 --- !u!1 &232646421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 901310049}
   - component: {fileID: 901310050}
+  - component: {fileID: 901310051}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -1271,7 +1175,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &901310050
 MonoBehaviour:
@@ -1289,6 +1193,23 @@ MonoBehaviour:
   installedModsUI: {fileID: 0}
   installedModsList: {fileID: 0}
   deletionConfirm: {fileID: 0}
+  blacklistManager: {fileID: 0}
+  currentInstallLocation: C:\Program Files (x86)\Steam\steamapps\common\Will You
+    Snail
+--- !u!114 &901310051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901310047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b28772673d37d542b93bd4845877d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blacklist: []
+  path: 
 --- !u!1 &1164404286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,7 +1816,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7538add114e7de740866a95a0ff1748b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ffa975a01de3b234dbd605bb2192b293, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2412,7 +2333,7 @@ MonoBehaviour:
   scrollEndOffset: -3.54
   modCount: 0
   listCount: 0
-  installLocManager: {fileID: 381615297}
+  menuManager: {fileID: 0}
   altModPrefabColor: {r: 0.22745098, g: 0.1882353, b: 0.22745098, a: 1}
   defaultIcon: {fileID: 2800000, guid: 6c844b5d2c1125f419af42f4732acedd, type: 3}
   icon: {fileID: 0}
@@ -2699,7 +2620,9 @@ MonoBehaviour:
   title: Loading...
   description: Loading description...
   authors: Loading authors...
+  id: 
   path: 
+  modEnabled: 1
   nameText: {fileID: 1456529898}
   descriptionText: {fileID: 1443393018}
   authorsText: {fileID: 25013858}
@@ -3079,7 +3002,7 @@ RectTransform:
   - {fileID: 1769540031}
   - {fileID: 482896364}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

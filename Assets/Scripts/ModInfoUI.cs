@@ -9,7 +9,9 @@ public class ModInfoUI : MonoBehaviour
     public string title = "Loading...";
     public string description = "Loading description...";
     public string authors = "Loading authors...";
+    public string id = "";
     public string path = "";
+    public bool modEnabled = true;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI authorsText;
@@ -60,6 +62,7 @@ public class ModInfoUI : MonoBehaviour
             Directory.Delete(d);
         }
     }
+
 
 
 }
