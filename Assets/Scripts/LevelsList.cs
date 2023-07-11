@@ -54,6 +54,7 @@ public class LevelsList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bottomMod = FindObjectsOfType<InstalledModObj>()[FindObjectsOfType<InstalledModObj>().Length - 1].gameObject;
         transform.Translate(new Vector2(0, Input.mouseScrollDelta.y) * scrollSpeed * Time.deltaTime);
         if(bottomMod.transform.position.y >= scrollEndOffset){
             transform.position = position_prev;
@@ -118,6 +119,7 @@ public class LevelsList : MonoBehaviour
                 i++;
                 bottomMod = installedMod;
             }    
+            scrollEndOffset += i * 1;
         }
         listCount = localDirectoriesFiltered.Count;
     }

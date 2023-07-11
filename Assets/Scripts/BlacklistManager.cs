@@ -9,7 +9,7 @@ public class BlacklistManager : MonoBehaviour
     public string path = "";
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         path = Path.Combine(FindObjectOfType<MenuManager>().currentInstallLocation, "gmml/mods");
     }

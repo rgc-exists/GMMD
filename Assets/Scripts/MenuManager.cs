@@ -6,23 +6,25 @@ public class MenuManager : MonoBehaviour
 {
     public ModInfoUI modInfoUI;
     public InstalledModsMenu installedModsUI;
+    public GameObject installedModsUIObj;
     public LevelsList installedModsList;
-    public AreYouSureDeletion  deletionConfirm;
+    public GameObject deletionConfirm;
     public BlacklistManager blacklistManager;
     public string currentInstallLocation = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Will You Snail";
+    public GameObject deletionConfirmObj;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         installedModsUI = FindObjectOfType<InstalledModsMenu>();
-        modInfoUI = FindObjectOfType<ModInfoUI>();
-        deletionConfirm = FindObjectOfType<AreYouSureDeletion>();
         installedModsList = FindObjectOfType<LevelsList>();
         blacklistManager = FindObjectOfType<BlacklistManager>();
-        deletionConfirm.gameObject.SetActive(false);
+        deletionConfirmObj.SetActive(false);
         installedModsUI.gameObject.SetActive(true);
+        installedModsList.menuManager = this;
         installedModsList.Reload_Mods();
         modInfoUI.gameObject.SetActive(false);
+        blacklistManager.path = currentInstallLocation;
         blacklistManager.RecieveBlacklist();
         blacklistManager.UpdateBlacklist();
     }
@@ -31,5 +33,12 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void GoToDownloadedMods(){
+        FindObjectOfType<MenuManager>().deletionConfirm.gameObject.SetActive(false);
+        FindObjectOfType<MenuManager>().installedModsUI.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+        FindObjectOfType<MenuManager>().installedModsList.Reload_Mods();
     }
 }

@@ -33,10 +33,10 @@ public class ModInfoUI : MonoBehaviour
     }
 
     public void StartDelete(){
-        FindObjectOfType<MenuManager>().deletionConfirm.gameObject.SetActive(true);
+        FindObjectOfType<MenuManager>().deletionConfirmObj.SetActive(true);
     }
     public void CancelDelete(){
-        FindObjectOfType<MenuManager>().deletionConfirm.gameObject.SetActive(false);
+        FindObjectOfType<MenuManager>().deletionConfirmObj.SetActive(false);
     }
     public void ConfirmDelete(){
         DeleteAllFilesAndSubdirsInDirectory(path);
@@ -45,8 +45,8 @@ public class ModInfoUI : MonoBehaviour
     }
 
     public void Back(){
-        FindObjectOfType<MenuManager>().deletionConfirm.gameObject.SetActive(false);
-        FindObjectOfType<MenuManager>().installedModsUI.gameObject.SetActive(true);
+        FindObjectOfType<MenuManager>().deletionConfirmObj.SetActive(false);
+        FindObjectOfType<MenuManager>().installedModsUIObj.SetActive(true);
         gameObject.SetActive(false);
         FindObjectOfType<MenuManager>().installedModsList.Reload_Mods();
     }
